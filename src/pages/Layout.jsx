@@ -3,7 +3,7 @@ import SubHeader from "./SubHeader";
 import Footer from "./Footer";
 import { Link, Outlet } from "react-router-dom"
 
-function Layout ({filmTitle, handleFilmTitle}) {
+function Layout ({handleFilmTitle, handleYear}) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -13,7 +13,7 @@ function Layout ({filmTitle, handleFilmTitle}) {
     return(
         <>
             <header>
-                <Link to="/">
+                <Link to="/" onClick={()=>handleFilmTitle(null)}>
                     <h1>Films... per New York Times</h1>
                 </Link>
                 <form id="search-bar" onSubmit={handleSubmit}>
@@ -24,7 +24,7 @@ function Layout ({filmTitle, handleFilmTitle}) {
                     <input type="image" src="/src/assets/search-icon.svg" alt="Submit"/>
                 </form>
             </header>
-            <SubHeader/>
+            <SubHeader handleFilmTitle={handleFilmTitle} handleYear={handleYear}/>
             <Outlet/>
             <Footer/>
         </>

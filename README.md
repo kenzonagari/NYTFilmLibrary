@@ -1,4 +1,4 @@
-# NYT FILM REVIEW LIBRARY
+# NYT Film Review Library
 
 ## User Experience
 
@@ -11,3 +11,5 @@ As a user, I'd like to:
 Additionally, it'll be nice to have:
 
 1. A light/dark theme option.
+2. Search for a specific movie in each decade?
+3. Access the iconic NYT critics' pick.
