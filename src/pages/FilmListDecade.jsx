@@ -1,8 +1,15 @@
+import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import FilmReview from "./FilmReview";
+import decadeWriteup from "../decadeWriteup";
 
-function FilmListHome ({filmTitle, searching}) {
+export default function FilmListDecade({filmTitle}){
+    let params = useParams();
     const [films, setFilms] = useState([]);
+    const [searchingDecade, setSearchingDecade] = useState(false);
+    const decade = parseInt(params.code);
+
+    // console.log(params)
 
     useEffect(()=>{
 
@@ -20,19 +27,15 @@ function FilmListHome ({filmTitle, searching}) {
             wordCounter += 1;
         }
 
-        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${inputFilmTitleUnderscored}&api-key=FFdcrxBVM9NGYTUgp68jFWrzlhfYU2cY`)
+        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?opening-date=${decade}-01-01:${decade+10}-01-01&${searchingDecade ? `query=${inputFilmTitleUnderscored}` : ""}&api-key=FFdcrxBVM9NGYTUgp68jFWrzlhfYU2cY`)
           .then((response) => response.json())
           .then((data) => {
             // console.log(data?.results[0]);
             setFilms(data?.results);
           });
 
-    },[filmTitle])
+    },[decade])
 
-    // const handleFetch = () => {
-    //     setCount(count + 1);
-    // }
-    
     let filmReviewComp=[""];
 
     if (films){
@@ -40,13 +43,12 @@ function FilmListHome ({filmTitle, searching}) {
             <FilmReview key={index} infoNyt={e}/>
         )
     }
-
+    
     return(
         <>
-            <div id="search-title">
-                <p>{searching? `${films? films.length: 0} Search Results for:` : ""}</p>
-                <h1>{filmTitle}</h1>
-                {/* <button onClick={handleFetch}>Generate Films</button> */}
+            <div className="content">
+                <h1>{decade}s</h1>
+                <p>{decadeWriteup[`${decade}`]}</p> 
             </div>
             <div id="container">
                 {filmReviewComp}
@@ -54,5 +56,3 @@ function FilmListHome ({filmTitle, searching}) {
         </>
     )
 }
-
-export default FilmListHome
