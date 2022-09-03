@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@100;200;300;400;500;600;700;900&display=swap');
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #242424;
+  text-decoration: inherit;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 7.5vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  font-family: 'Bitter', serif;
+}
+
+header > h1 {
+  font-size: 1.75em;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+#search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+input[type=text] {
+  padding: 10px 10px;
+  margin: 8px;
+  border: 2px solid #dedede;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+input[type=image] {
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#subheader-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#subheader-tab {
+  list-style-type: none;
+  display: flex;
+}
+
+#subheader-tab > li {
+  font-family: 'Bitter', serif;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: rgb(75, 75, 75);
+  padding: 10px;
+  cursor: pointer;
+}
+
+#subheader-tab > li:hover {
+  color: black;
+}
+
+#subheader-decades {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 400px;
+}
+
+#subheader-decades > li {
+  font-family: 'Bitter', serif;
+  font-weight: 700;
+  color: rgb(138, 138, 138);
+  padding: 5px;
+  cursor: pointer;
+}
+
+#subheader-decades > li:hover {
+  color: black;
+}
+
+#search-title {
+  font-family: 'Bitter', serif;
+  text-align: center;
+}
+
+#search-title > h1 {
+  font-weight: 700;
+  margin-top: -10px;
+  font-size: 2.5em;
+}
+
+#search-title > p {
+  margin-top: 50px;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-items: center;
+  margin: auto;
+}
+
+.card{
+  background: white;
+  border: 2px solid rgb(236, 236, 236);
+  border-radius: 10px;
+  width: 25vw;
+  height: fit-content;
+  margin: 20px;
+  padding: 20px;
+}
+
+.card > h1 {
+  font-family: 'Bitter', serif;
+}
+
+.card > h2 {
+  color: rgb(75, 75, 75);
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 1.1;
+}
+
+p {
+  font-size: 0.95em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: 'Bitter', serif;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #393fa0;
+  color: #393fa0;
+  background-color: #e2e2e2;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+footer {
+  background-color:#242424;
+  color: white;
+  height: 50vh;
+  margin-top: 10vh;
+  margin-bottom: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #000000;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #000000;
+  }
+  button {
+    background-color: #efefef;
+  }
+}
