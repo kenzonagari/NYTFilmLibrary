@@ -1,16 +1,16 @@
 const decadeWriteup = {
-    1910: "Cinema as an artform was still taking shape. Film companies moved from New York to California, and the rest is history.",
-    1920: "The golden era of silent films came and went as talkies were invented in mid 20s. Turns out people like hearing people talk!",
-    1930: "Fred Astaire and Ginger Rogers, baby. Also say goodbye to legs in movies.",
-    1940: "The 40s - the Citizen Kane of decades in film history.",
-    1950: "Hitchcock, Kurosawa, Ed Wood. Your favorite director's favorite directors.",
-    1960: "A decade that opened with Psycho couldn't possibly be bad, could it?",
-    1970: "Thought-provoking films made by college kids. Marlon Brando (literally) gave birth to a new generation of male actors.",
-    1980: "The concept of modern Blockbusters was finally perfected. Everyone operated at a slightly faster pace for reasons unknown.",
-    1990: "James Cameron became king of the world, and Disney figured out how to make good cartoons.",
-    2000: "Action CGI movies took off. Thanks, the Matrix!",
-    2010: "Franchise blockbusters took over cinemas. Death of the artform, per Martin Scorsese.",
-    2020: "Guys, I think Scorsese has a point."
+    1910: "",
+    1920: `"Wait a minute, wait a minute. You ain't heard nothin' yet!" - The Jazz Singer (1927)`,
+    1930: `"There's no place like home." - The Wizard Of Oz (1939)`,
+    1940: `"Rosebud." - Citizen Kane (1940)`,
+    1950: `"All right, Mr. DeMille, I'm ready for my close-up." - Sunset Boulevard (1950)`,
+    1960: `"Open the pod bay doors, please, HAL." - 2001: A Space Odyssey (1968)`,
+    1970: `"You talking to me?" - Taxi Driver (1976)`,
+    1980: `"E.T. phone home" - E.T.: The Extra-Terrestrial (1982)`,
+    1990: `"I'm the king of the world!" - Titanic (1997)`,
+    2000: `"Remember, with great power comes great responsibility." - Spider-Man (2002)`,
+    2010: `"Not quite my tempo." - Whiplash (2014)`,
+    2020: `"What's a bad miracle? They got a word for that?" - Nope (2022)`,
 }
 
 export default decadeWriteup
