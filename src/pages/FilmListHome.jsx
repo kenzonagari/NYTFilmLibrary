@@ -3,8 +3,11 @@ import FilmReview from "./FilmReview";
 
 function FilmListHome ({filmTitle, searching}) {
     const [films, setFilms] = useState([]);
+    const [status, setStatus] = useState("loading");
 
     useEffect(()=>{
+
+        setStatus("loading");
 
         const inputFilmTitleArr = filmTitle.split(" ");
         let inputFilmTitleUnderscored = "";
@@ -25,7 +28,10 @@ function FilmListHome ({filmTitle, searching}) {
           .then((data) => {
             // console.log(data?.results[0]);
             setFilms(data?.results);
-          });
+            setStatus(searching);
+          }).catch((error) => {
+            setStatus("error");
+          })
 
     },[filmTitle])
 
@@ -43,10 +49,12 @@ function FilmListHome ({filmTitle, searching}) {
 
     return(
         <>
-            <div id="search-title">
-                <p>{searching? `${films? films.length: 0} Search Results for:` : ""}</p>
-                <h1>{filmTitle}</h1>
-                {/* <button onClick={handleFetch}>Generate Films</button> */}
+            <div className="title">
+                <p> {status === "success" ? `${films? films.length: 0} Search Results for:` : ""}
+                    {status === "loading" ? "loading..." : ""}
+                    {status === "error"? "Something went wrong. Try again later!" : ""}
+                </p>
+                <h1>{status === "success" ? filmTitle : ""}</h1>
             </div>
             <div id="container">
                 {filmReviewComp}

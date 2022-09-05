@@ -16,7 +16,7 @@ function App() {
   const handleFilmTitle = (inputFilmTitle) => {
     if(inputFilmTitle){
         setFilmTitle(inputFilmTitle);
-        setSearching(true);
+        setSearching("success");
     } else {
       setFilmTitle("");
       setSearching(false);
@@ -35,7 +35,7 @@ function App() {
             <Route index element={<FilmListHome filmTitle={filmTitle} searching={searching} />} />
             <Route path="critics-pick" element={<CriticsPick />} />
             <Route path="favorites" element={<Favorites />} />
-            <Route path=":code" element={<FilmListDecade filmTitle={filmTitle} />}/>
+            <Route path=":code" element={<FilmListDecade />}/>
             <Route path="*" element={<h1>Not found</h1>} />
           </Route>
         </Routes>

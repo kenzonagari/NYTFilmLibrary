@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import FilmReview from "./FilmReview";
 
 export default function CriticsPick(){
-
+    
     const [picks, setPicks] = useState([]);
     
     useEffect(()=>{
@@ -26,7 +26,9 @@ export default function CriticsPick(){
     
     return(
         <>
-            <h2>Critics' Pick!!</h2>  
+            <div className="title">
+                <h1>Critics' Pick</h1>  
+            </div>
             <div id="container">
                 {filmReviewComp}
             </div>

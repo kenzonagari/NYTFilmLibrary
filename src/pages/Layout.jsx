@@ -14,7 +14,7 @@ function Layout ({handleFilmTitle, handleYear}) {
         <>
             <header>
                 <Link to="/" onClick={()=>handleFilmTitle(null)}>
-                    <h1>Films... per New York Times</h1>
+                    <h1>Films... per New York Times!</h1>
                 </Link>
                 <form id="search-bar" onSubmit={handleSubmit}>
                     <input  type="text"

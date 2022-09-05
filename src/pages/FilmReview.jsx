@@ -8,7 +8,7 @@ export default function FilmReview({infoNyt}){
             <h2>{infoNyt.headline}</h2>
             <p><b>Release Date:</b> {infoNyt.opening_date ? infoNyt.opening_date : "N/A"}</p>
             <p>{infoNyt.summary_short ? infoNyt.summary_short : "No summary available"}</p>
-            <a href={infoNyt.link.url}><button>Read Full Review</button></a>
+            <a href={infoNyt.link.url}><button className="button">Read Full Review</button></a>
 
         </div>
         </>
