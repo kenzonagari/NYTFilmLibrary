@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import FilmReview from "./FilmReview";
+import PaginationScrollbar from "./PaginationScrollbar";
 
 function FilmListHome ({filmTitle, searching}) {
     const [films, setFilms] = useState([]);
+    const [pageOffset, setPageOffset] = useState(1);
     const [status, setStatus] = useState("loading");
 
     useEffect(()=>{
@@ -23,7 +25,7 @@ function FilmListHome ({filmTitle, searching}) {
             wordCounter += 1;
         }
 
-        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${inputFilmTitleUnderscored}&api-key=FFdcrxBVM9NGYTUgp68jFWrzlhfYU2cY`)
+        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${inputFilmTitleUnderscored}&offset=${(pageOffset-1)*20}&api-key=FFdcrxBVM9NGYTUgp68jFWrzlhfYU2cY`)
           .then((response) => response.json())
           .then((data) => {
             // console.log(data?.results[0]);
@@ -33,14 +35,18 @@ function FilmListHome ({filmTitle, searching}) {
             setStatus("error");
           })
 
-    },[filmTitle])
+    },[filmTitle, pageOffset])
 
     // const handleFetch = () => {
     //     setCount(count + 1);
     // }
+
+    const handlePage = (num) => {
+        setPageOffset(num);
+    }
+
     
     let filmReviewComp=[""];
-
     if (films){
         filmReviewComp = films.map((e, index) =>
             <FilmReview key={index} infoNyt={e}/>
@@ -55,6 +61,7 @@ function FilmListHome ({filmTitle, searching}) {
                     {status === "error"? "Something went wrong. Try again later!" : ""}
                 </p>
                 <h1>{status === "success" ? filmTitle : ""}</h1>
+                <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
             </div>
             <div id="container">
                 {filmReviewComp}
