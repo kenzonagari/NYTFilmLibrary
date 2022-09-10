@@ -182,6 +182,16 @@ input[type=image] {
   transform: scale(1.05);
 }
 
+.page-list > .dot {
+  cursor: default;
+}
+
+.page-list > .dot:hover {
+  cursor: default;
+  color: rgb(138, 138, 138);
+  transform: scale(1);
+}
+
 .page-list > .current-page {
   color: black;
   transform: scale(1.05);
@@ -287,6 +297,14 @@ input[type=image] {
 .CircularProgressbar-text{
   font-family: 'Bitter', serif;
   font-weight: 900;
+}
+
+.fav-star {
+  cursor: pointer;
+  position: absolute;
+  margin: 1em;
+  width: 2em;
+  align-self: flex-start; 
 }
 
 footer {

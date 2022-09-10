@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { FavContext } from "../App";
 import splitTitle from "../splitTitle";
 
 import {
@@ -11,11 +12,14 @@ import "react-circular-progressbar/dist/styles.css";
 export default function FilmReview({infoNyt}){
     // console.log(infoNyt.multimedia); //if no multimedia, null is logged.
     const [filmTmdb, setFilmTmdb] = useState([]);
+    const [star, setStar] = useState(0);
+    let favContext = useContext(FavContext);
+    
     let inputFilmTitleDashed = "";
 
     useEffect(()=>{
 
-        let inputFilmTitleDashed = splitTitle(infoNyt.display_title, "-");
+        inputFilmTitleDashed = splitTitle(infoNyt.display_title, "-");
 
         let inputFilmYear = "";
 
@@ -31,9 +35,7 @@ export default function FilmReview({infoNyt}){
           }).catch((error) => {
           })
 
-        console.log(infoNyt.display_title, inputFilmTitleDashed);
-
-    },[infoNyt])
+    },[infoNyt, star])
 
     let filmURL = "";
     if(infoNyt?.multimedia){
@@ -70,6 +72,16 @@ export default function FilmReview({infoNyt}){
             trail:"#437B4F"
         };
     }
+
+    const handleStar = () => {
+        if(star === 0){
+            setStar(1);
+            favContext.push(infoNyt);
+            console.log(favContext);
+        } else {
+            setStar(0);
+        }
+    }
     
     return(
         <>
@@ -100,6 +112,9 @@ export default function FilmReview({infoNyt}){
                         })}
                     />
                 </a>
+            </div>
+            <div className="fav-star">
+                <img src={star === 0 ? "src/assets/star-nofav.svg" : "src/assets/star-fav.svg"} alt="favorite" onClick={handleStar}></img>
             </div>
         </div>
         </>
