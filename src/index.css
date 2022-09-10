@@ -276,10 +276,12 @@ input[type=image] {
   position: absolute;
   align-self: flex-end;
   margin: 0.5em;
+  border-radius: 50%;
 }
 
 .circular-progress-bar:hover {
   transform: scale(1.05);
+  box-shadow: 0px 0px 15px 2px rgb(255, 255, 255);
 }
 
 .CircularProgressbar-text{

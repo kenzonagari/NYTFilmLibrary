@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import FilmReview from "./FilmReview";
 import PaginationScrollbar from "./PaginationScrollbar";
+import splitTitle from "../splitTitle";
 
 import ReactLoading from 'react-loading';
 
 function FilmListHome ({filmTitle, searching}) {
+
     const [films, setFilms] = useState([]);
     const [pageOffset, setPageOffset] = useState(1);
     const [status, setStatus] = useState("loading");
@@ -13,34 +15,21 @@ function FilmListHome ({filmTitle, searching}) {
 
         setStatus("loading");
 
-        const inputFilmTitleArr = filmTitle.split(" ");
-        let inputFilmTitleUnderscored = "";
-        let wordCounter = 0;
-
-        for(let word of inputFilmTitleArr){
-            if(wordCounter === 0){
-                inputFilmTitleUnderscored = word;
-            } else {
-                inputFilmTitleUnderscored += "_" + word;
-            }
-            wordCounter += 1;
-        }
+        let inputFilmTitleUnderscored = splitTitle(filmTitle, "_");
 
         fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${inputFilmTitleUnderscored}&offset=${(pageOffset-1)*20}&api-key=FFdcrxBVM9NGYTUgp68jFWrzlhfYU2cY`)
             .then((response) => {
                 // console.log(response.status);
-                if(response.status == 429){
-                    console.log("hello")
-                    setStatus("error429");
-                } else {
+                // if(response.status == 429){
+                //     console.log("hello")
+                //     setStatus("error429");
+                // } else {
                     return response.json();   
-                }
+                
             })
             .then((data) => {
                 setFilms(data?.results);
-                if(status !== "error429"){
-                    setStatus(searching);
-                }
+                setStatus(searching);
             })  .catch((error) => {
                 setStatus("error");
             })
@@ -58,13 +47,12 @@ function FilmListHome ({filmTitle, searching}) {
         )
     }
 
-    const paginationScrollbar = <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>;
     const ReactLoadingComp = <ReactLoading type="bubbles" color="#393fa0" height={100} width={100} />;
 
     return(
         <>
             <div className="title">
-                {paginationScrollbar}
+                <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
                 <p> {status === "success" ? `${films? films.length: 0} Search Results for:` : ""}
                     {status === "error"? "Something went wrong. Try again later!" : ""}
                     {status === "error429"? "Too many requests. Try again later!" : ""}
