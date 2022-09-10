@@ -2,21 +2,13 @@ import { useState, useEffect } from "react";
 import FilmReview from "./FilmReview";
 import PaginationScrollbar from "./PaginationScrollbar";
 
+import ReactLoading from 'react-loading';
+
 export default function CriticsPick(){
     
     const [picks, setPicks] = useState([]);
     const [pageOffset, setPageOffset] = useState(1);
     const [status, setStatus] = useState("loading");
-    
-    // useEffect(()=>{
-
-    //     fetch(`https://api.nytimes.com/svc/movies/v2/reviews/picks.json?offset=${pageOffset}&api-key=FFdcrxBVM9NGYTUgp68jFWrzlhfYU2cY`)
-    //       .then((response) => response.json())
-    //       .then((data) => {
-    //         setPicks(data?.results);
-    //       });
-
-    // },[pageOffset])
 
     useEffect(()=>{
 
@@ -44,13 +36,15 @@ export default function CriticsPick(){
             <FilmReview key={index} infoNyt={e}/>
         )
     }
+
+    const ReactLoadingComp = <ReactLoading type="bubbles" color="#393fa0" height={100} width={100} />;
     
     return(
         <>
             <div className="title">
                 <h1>Critics' Pick</h1>  
                 <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
-                {status === "loading" ? "loading..." : ""}
+                {status === "loading" ? ReactLoadingComp : ""}
                 {status === "error" ? "Something went wrong. Try again later!" : ""}
             </div>
             <div id="container">

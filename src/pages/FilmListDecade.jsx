@@ -2,11 +2,15 @@ import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import FilmReview from "./FilmReview";
 import decadeWriteup from "../decadeWriteup";
+import PaginationScrollbar from "./PaginationScrollbar";
+
+import ReactLoading from 'react-loading';
 
 export default function FilmListDecade(){
     let params = useParams();
     const [searchTitle, setSearchTitle] = useState("");
     const [films, setFilms] = useState([]);
+    const [pageOffset, setPageOffset] = useState(1);
     const [status, setStatus] = useState("loading");
     const decade = parseInt(params.code);
 
@@ -29,7 +33,7 @@ export default function FilmListDecade(){
             wordCounter += 1;
         }
 
-        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?opening-date=${decade}-01-01:${decade+9}-12-31&query=${inputFilmTitleUnderscored}&api-key=FFdcrxBVM9NGYTUgp68jFWrzlhfYU2cY`)
+        fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?opening-date=${decade}-01-01:${decade+9}-12-31&query=${inputFilmTitleUnderscored}&offset=${(pageOffset-1)*20}&api-key=FFdcrxBVM9NGYTUgp68jFWrzlhfYU2cY`)
           .then((response) => response.json())
           .then((data) => {
             // console.log(data?.results[0]);
@@ -40,7 +44,7 @@ export default function FilmListDecade(){
             setStatus("error");
           })
 
-    },[decade, searchTitle]);
+    },[decade, searchTitle, pageOffset]);
 
     const handleFilter = (event) => {
         event.preventDefault(event);
@@ -48,13 +52,18 @@ export default function FilmListDecade(){
         setSearchTitle(event.target[0].value);
     }
 
-    let filmReviewComp=[""];
+    const handlePage = (num) => {
+        setPageOffset(num);
+    }
 
+    let filmReviewComp=[""];
     if (films){
         filmReviewComp = films.map((e, index) =>
             <FilmReview key={index} infoNyt={e}/>
         )
     }
+
+    const ReactLoadingComp = <ReactLoading type="bubbles" color="#393fa0" height={100} width={100} />;
     
     return(
         <>
@@ -69,12 +78,13 @@ export default function FilmListDecade(){
                     />
                     <input type="submit" value="Filter" className="button"/>
                 </form> 
-                {status === "loading" ? "loading..." : ""}
+                <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
+                {status === "loading" ? ReactLoadingComp : ""}
                 {status === "error" ? "Something went wrong. Try again later!" : ""}
             </div>
             <div id="container">
                 {status === "success" ? filmReviewComp : ""}
             </div>
-        </>
+        </>     
     )
 }

@@ -32,6 +32,7 @@ body {
 .App{
   min-height:100%;
   position:relative;
+  background-color: rgb(245, 245, 245);
 }
 
 header {
@@ -127,17 +128,20 @@ input[type=image] {
 .title {
   font-family: 'Bitter', serif;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title > h1 {
   font-weight: 700;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 1em;
   font-size: 2.5em;
 }
 
 .title > p {
-  margin-top: 50px;
+  margin-top: 0;
 }
 
 #film-quote{
@@ -150,13 +154,12 @@ input[type=image] {
 
 .page-list {
   list-style-type: none;
-  overflow-x: visible;
+  overflow-x: hidden;
   overflow-y: hidden;
   white-space: nowrap;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-content: center;
   margin: 20px;
   margin-left: 50px;
   margin-right: 50px;
@@ -164,11 +167,14 @@ input[type=image] {
 }
 
 .page-list > li {
-  padding: 10px;
-  cursor: pointer;
-  font-weight: 700;
   color: rgb(138, 138, 138);
-  
+  padding: 15px;
+  margin: 5px;
+  width: 0.5em;
+  height: 0.5em;
+  font-weight: 700;
+  line-height: 0.5em;
+  cursor: pointer;
 }
 
 .page-list > li:hover {
@@ -187,7 +193,7 @@ input[type=image] {
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: stretch;
-  align-items: center;
+  align-items: stretch;
   margin: auto;
   padding:10px;
   padding-bottom:60px;
@@ -196,33 +202,50 @@ input[type=image] {
 
 .card{
   background: white;
-  border: 2px solid rgb(236, 236, 236);
+  border: 2px solid rgb(218, 218, 218);
   border-radius: 10px;
-  width: 40vw;
-  height: fit-content;
-  margin: 10px;
-  padding: 20px;
+  width: 47.5vw;
+  margin: 5px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
 }
 
-.card > h1 {
+.card > img {
+  padding: 0;
+  padding-right: 1.5em;
+  width: 20em;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card > .text {
+  margin: 0.5em;
+  padding: 2em;
+  padding-left: 1em;
+}
+
+.text > h1 {
   font-family: 'Bitter', serif;
-}
-
-.card > h2 {
-  color: rgb(75, 75, 75);
-}
-
-.card > .byline {
-  font-style: italic;
-  color: rgb(75, 75, 75);
-}
-
-h1 {
   font-size: 2em;
   line-height: 1.1;
 }
 
-p {
+.text > h2 {
+  color: rgb(75, 75, 75);
+  font-size: 1.2em;
+  line-height: 1em;
+}
+
+.text > .byline {
+  font-style: italic;
+  color: rgb(75, 75, 75);
+}
+
+.text > p {
   font-size: 0.95em;
   line-height: 1.1;
 }
@@ -246,6 +269,22 @@ p {
 .button:focus,
 .button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.circular-progress-bar {
+  width: 4.5em;
+  position: absolute;
+  align-self: flex-end;
+  margin: 0.5em;
+}
+
+.circular-progress-bar:hover {
+  transform: scale(1.05);
+}
+
+.CircularProgressbar-text{
+  font-family: 'Bitter', serif;
+  font-weight: 900;
 }
 
 footer {
