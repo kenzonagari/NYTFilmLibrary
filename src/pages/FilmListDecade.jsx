@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import FilmReview from "./FilmReview";
 import decadeWriteup from "../decadeWriteup";
 import PaginationScrollbar from "./PaginationScrollbar";
+import splitTitle from "../splitTitle";
 
 import ReactLoading from 'react-loading';
 
@@ -14,24 +15,11 @@ export default function FilmListDecade(){
     const [status, setStatus] = useState("loading");
     const decade = parseInt(params.code);
 
-    // setSearchTitle("");
-
     useEffect(()=>{
 
         setStatus("loading");
 
-        const inputFilmTitleArr = searchTitle.split(" ");
-        let inputFilmTitleUnderscored = "";
-        let wordCounter = 0;
-
-        for(let word of inputFilmTitleArr){
-            if(wordCounter === 0){
-                inputFilmTitleUnderscored = word;
-            } else {
-                inputFilmTitleUnderscored += "_" + word;
-            }
-            wordCounter += 1;
-        }
+        let inputFilmTitleUnderscored = splitTitle(searchTitle,"_");
 
         fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?opening-date=${decade}-01-01:${decade+9}-12-31&query=${inputFilmTitleUnderscored}&offset=${(pageOffset-1)*20}&api-key=FFdcrxBVM9NGYTUgp68jFWrzlhfYU2cY`)
           .then((response) => response.json())

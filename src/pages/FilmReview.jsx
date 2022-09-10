@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import splitTitle from "../splitTitle";
 
 import {
     CircularProgressbar,
@@ -14,17 +15,7 @@ export default function FilmReview({infoNyt}){
 
     useEffect(()=>{
 
-        const inputFilmTitleArr = infoNyt.display_title.split(" ");
-        let wordCounter = 0;
-
-        for(let word of inputFilmTitleArr){
-            if(wordCounter === 0){
-                inputFilmTitleDashed = word;
-            } else {
-                inputFilmTitleDashed += "-" + word;
-            }
-            wordCounter += 1;
-        }
+        let inputFilmTitleDashed = splitTitle(infoNyt.display_title, "-");
 
         let inputFilmYear = "";
 
@@ -38,10 +29,11 @@ export default function FilmReview({infoNyt}){
             // console.log(data?.results[0].poster_path);
             setFilmTmdb(data?.results[0]);
           }).catch((error) => {
-            setStatus("error");
           })
 
-    },[])
+        console.log(infoNyt.display_title, inputFilmTitleDashed);
+
+    },[infoNyt])
 
     let filmURL = "";
     if(infoNyt?.multimedia){
