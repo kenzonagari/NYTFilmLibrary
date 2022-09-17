@@ -19,7 +19,7 @@ export default function SubHeader ({handleFilmTitle, handleYear}) {
         <>
             <ul id="subheader-list">
                 <div id="subheader-tab">
-                    <li><Link to ="/" onClick={()=>handleFilmTitle(null)}>Main Page</Link></li>
+                    <li><Link to ="/" onClick={()=>handleFilmTitle(null)}>Home Page</Link></li>
                     <li><Link to ="/critics-pick">Critics' Pick</Link></li>
                     <li><Link to ="/favorites">Favorites</Link></li>
                 </div>

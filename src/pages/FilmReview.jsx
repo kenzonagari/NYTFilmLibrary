@@ -110,9 +110,9 @@ export default function FilmReview({infoNyt}){
                 <p>{infoNyt.summary_short ? infoNyt.summary_short : "No summary available"}</p>
                 <a href={infoNyt.link.url} target="_blank"><button className="button">Read Full Review</button></a>
             </div>
-            <div className="fav-icon">
+            <div className="fav-icon" onClick={handleFav}>
                 <span className="fav-icon-text">Add to Favorites</span>
-                <img src="https://raw.githubusercontent.com/kenzonagari/NYTFilmLibrary/64f888b42a7d910ecf718e62ac4ba06f8f8686a8/src/assets/add-icon.svg" alt="favorite" onClick={handleFav}></img>
+                <img src="https://raw.githubusercontent.com/kenzonagari/NYTFilmLibrary/64f888b42a7d910ecf718e62ac4ba06f8f8686a8/src/assets/add-icon.svg" alt="favorite" ></img>
             </div>
             <div className="circular-progress-bar">
                 <a href={filmTmdb? `https://www.themoviedb.org/movie/${filmTmdb.id}-${inputFilmTitleDashed}` : "https://www.themoviedb.org/movie/"} target="_blank">

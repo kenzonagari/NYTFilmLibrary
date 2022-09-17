@@ -54,6 +54,17 @@ header > h1 {
   letter-spacing: 0.5px;
 }
 
+#navbar-homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#navbar-homepage > img {
+  margin: 0;
+  transform: scale(0.7);
+}
+
 #search-bar {
   display: flex;
   flex-direction: row;
