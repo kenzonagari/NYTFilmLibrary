@@ -43,7 +43,7 @@ export default function FilmReview({infoNyt}){
     } else if (filmTmdb?.poster_path) {
         filmURL = `https://image.tmdb.org/t/p/original${filmTmdb?.poster_path}`;
     } else {
-        filmURL = "src/assets/imagenotfound.png";
+        filmURL = "https://github.com/kenzonagari/NYTFilmLibrary/blob/main/src/assets/imagenotfound.png?raw=true";
     }
 
     const userScore = filmTmdb?.vote_average ? (filmTmdb.vote_average*10) : 0;
@@ -94,7 +94,7 @@ export default function FilmReview({infoNyt}){
         }
     }
 
-    const favPopup = <div className="popup">{isDuplicate === false? "Added To Favorites!" : isDuplicate === true? "Movie Already Added!" : ""}</div>
+    const favPopup = <div className="popup">{isDuplicate === false? "Added To Favorites!" : isDuplicate === true? "Movie already added!" : ""}</div>
     
     return(
         <>

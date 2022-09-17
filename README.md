@@ -14,7 +14,7 @@ The NYT API is also supplemented with the TMDB API for additional infos such as 
 
 1. Search for a specific movie based on its title (Y)
 2. Browse for different films through the decades (Y)
-3. Add movies to favorites (WIP)
+3. Add movies to favorites (Y?)
 
 Additionally, it'll be nice to have:
 
