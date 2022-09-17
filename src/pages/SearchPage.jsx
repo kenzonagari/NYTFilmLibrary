@@ -11,8 +11,6 @@ function SearchPage ({filmTitle, searching}) {
     const [pageOffset, setPageOffset] = useState(1);
     const [status, setStatus] = useState("loading");
 
-    console.log(filmTitle, searching);
-
     useEffect(()=>{
 
         setStatus("loading");
@@ -51,16 +49,20 @@ function SearchPage ({filmTitle, searching}) {
 
     const ReactLoadingComp = <ReactLoading type="bubbles" color="#393fa0" height={100} width={100} />;
 
+    const titleElements = <>
+                            <p> {status === "success" ? `${films? films.length: 0} Search Results for:` : ""}
+                                {status === "error"? "Something went wrong. Try again later!" : ""}
+                                {status === "error429"? "Too many requests. Try again later!" : ""}
+                            </p>
+                            <h1>{status === "success" ? filmTitle : ""}</h1>
+                        </>;
+
     return(
         <>
             <div className="title">
-                <p> {status === "success" ? `${films? films.length: 0} Search Results for:` : ""}
-                    {status === "error"? "Something went wrong. Try again later!" : ""}
-                    {status === "error429"? "Too many requests. Try again later!" : ""}
-                </p>
-                {status === "loading" ? ReactLoadingComp : ""}
-                <h1>{status === "success" ? filmTitle : ""}</h1>
+                {titleElements}
                 <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
+                {status === "loading" ? ReactLoadingComp : ""}
             </div>
             <div id="container">
                 {filmReviewComp}
