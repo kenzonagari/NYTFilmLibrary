@@ -160,7 +160,7 @@ input[type=image] {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin: 20px;
+  margin: 3em;
   margin-left: 50px;
   margin-right: 50px;
   transform: scale(0.95);
@@ -170,7 +170,7 @@ input[type=image] {
   color: rgb(138, 138, 138);
   padding: 15px;
   margin: 5px;
-  width: 0.5em;
+  width: fit-content;
   height: 0.5em;
   font-weight: 700;
   line-height: 0.5em;
@@ -238,10 +238,53 @@ input[type=image] {
   padding-left: 1em;
 }
 
-.text > h1 {
+.card-title {
   font-family: 'Bitter', serif;
   font-size: 2em;
   line-height: 1.1;
+}
+
+.fav-icon {
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  align-self: flex-start;
+  margin: 5px;
+  padding: 7px;
+  background-color: white;
+  border-radius: 25%;
+  scale: 0.8;
+  border: 2px solid #efefef;
+}
+
+.fav-icon-text {
+  visibility: hidden;
+  font-size: small;
+  width: max-content;
+  background-color: #efefef;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 5px;
+  padding: 7px;
+  box-shadow: 0px 5px 10px 0px rgba(255, 255, 255, 0.5);
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 0%;
+  left: 110%;
+  margin-left: 10px;
+}
+
+.fav-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 5px 10px 0px rgba(255, 255, 255, 0.5);
+}
+
+.fav-icon:hover .fav-icon-text{
+  visibility: visible;
 }
 
 .text > h2 {
@@ -299,12 +342,25 @@ input[type=image] {
   font-weight: 900;
 }
 
-.fav-star {
-  cursor: pointer;
-  position: absolute;
-  margin: 1em;
-  width: 2em;
-  align-self: flex-start; 
+.popup{
+  position: fixed;
+  top: 12%;
+  width: fit-content;
+  padding: 7px;
+  background-color: #575edb;
+  color: white;
+  border-radius: 7px;
+  z-index: 1;
+  animation: rise 2s ease-out forwards;
+}
+
+@keyframes rise {
+  10% {transform: translateY(-10px);}
+  40%{transform: translateY(0px);}
+  50%{opacity: 1;}
+  100%{ opacity: 0;
+    display: none;
+  }
 }
 
 footer {

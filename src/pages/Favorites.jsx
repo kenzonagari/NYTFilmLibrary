@@ -5,7 +5,7 @@ import { FavContext } from "../App";
 export default function Favorites () {
     const favContext = useContext(FavContext);
 
-    console.log(favContext);
+    // console.log(favContext);
 
     let filmReviewComp=[""];
     if (favContext.length > 0){
@@ -17,6 +17,7 @@ export default function Favorites () {
     return(
         <>
             <div className="title">
+                <h1>Favorites</h1>
             </div>
             <div id="container">
                 {filmReviewComp}

@@ -20,11 +20,13 @@ export default function PaginationScrollbar ({handlePage, pageOffset}) {
     return (
         <>
             <ul className="page-list">
+                <li onClick={()=>handlePage(pageOffset-1)}>{`<< Prev`}</li>
                 {pageOffset > 4 ? listOne : ""}
                 {pageOffset > 5 ? firstDot : ""}
                 {numberList}
                 {pageOffset < 96? lastDot : ""}
                 {pageOffset < 97? listOneHundredth : ""}
+                <li onClick={()=>handlePage(pageOffset+1)}>{`Next >>`}</li>
             </ul>
         </>
     )
