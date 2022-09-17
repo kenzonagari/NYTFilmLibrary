@@ -112,7 +112,7 @@ export default function FilmReview({infoNyt}){
             </div>
             <div className="fav-icon">
                 <span className="fav-icon-text">Add to Favorites</span>
-                <img src="src/assets/add-icon.svg" alt="favorite" onClick={handleFav}></img>
+                <img src="./src/assets/add-icon.svg" alt="favorite" onClick={handleFav}></img>
             </div>
             <div className="circular-progress-bar">
                 <a href={filmTmdb? `https://www.themoviedb.org/movie/${filmTmdb.id}-${inputFilmTitleDashed}` : "https://www.themoviedb.org/movie/"} target="_blank">

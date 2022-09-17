@@ -382,8 +382,12 @@ footer > p {
   margin-top: 0;
 }
 
-footer > a {
-  color: white;
+footer > a , footer > p > a {
+  color: rgb(202, 220, 255);
+}
+
+footer > a:hover , footer > p > a:hover {
+  color: #a1a5ff;
 }
 
 /* width */
@@ -413,9 +417,7 @@ footer > a {
     color: #000000;
     background-color: #ffffff;
   }
-  footer > a:hover {
-    color: #a1a5ff;
-  }
+  
   .button {
     background-color: #efefef;
   }
