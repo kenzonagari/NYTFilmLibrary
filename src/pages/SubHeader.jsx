@@ -7,7 +7,7 @@ export default function SubHeader ({handleFilmTitle, handleYear}) {
     for (let i = 0 ; i < decadeTotal ; i ++) {
         const year = 1910+(i*10);
         yearList.push(
-            <Link to={`/${year}s`} key={year}>
+            <Link to={`/decades/${year}s`} key={year}>
                 <li key={year} onClick={()=>handleYear(year)}>
                     {year}s
                 </li>
