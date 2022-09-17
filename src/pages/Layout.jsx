@@ -10,7 +10,7 @@ function Layout ({handleFilmTitle, handleYear}) {
     const handleSubmit = (event) => {
         event.preventDefault();
         handleFilmTitle(event.target.elements.title.value);
-        navigate("/search");
+        navigate(`/search/${event.target.elements.title.value}`);
     }
 
     return(

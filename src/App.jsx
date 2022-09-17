@@ -39,7 +39,7 @@ function App() {
             <Route path="critics-pick" element={<CriticsPick />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path=":code" element={<FilmListDecade />}/>
-            <Route path="search" element={<SearchPage filmTitle={filmTitle} searching={searching}/>}/>
+            <Route path="search/:code" element={<SearchPage filmTitle={filmTitle} searching={searching}/>}/>
             <Route path="*" element={<h1>Not found</h1>} />
           </Route>
         </Routes>
