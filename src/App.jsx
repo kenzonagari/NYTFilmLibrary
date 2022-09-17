@@ -4,6 +4,7 @@ import FilmListHome from './pages/FilmListHome'
 import FilmListDecade from './pages/FilmListDecade'
 import CriticsPick from './pages/CriticsPick'
 import Favorites from './pages/Favorites'
+import SearchPage from './pages/SearchPage'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 export const FavContext = createContext();
@@ -34,11 +35,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout handleFilmTitle={handleFilmTitle} handleYear={handleYear} />}>
-            {/* <FavContext.Provider value={favorites}></FavContext.Provider> */}
             <Route index element={<FilmListHome filmTitle={filmTitle} searching={searching} />} />
             <Route path="critics-pick" element={<CriticsPick />} />
             <Route path="favorites" element={<Favorites />} />
-            <Route path=":code" element={<FilmListDecade />}/>
+            <Route path="decades/:code" element={<FilmListDecade />}/>
+            <Route path="search/:code" element={<SearchPage filmTitle={filmTitle} searching={searching}/>}/>
             <Route path="*" element={<h1>Not found</h1>} />
           </Route>
         </Routes>

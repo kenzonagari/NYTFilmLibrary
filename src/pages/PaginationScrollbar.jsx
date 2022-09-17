@@ -11,22 +11,25 @@ export default function PaginationScrollbar ({handlePage, pageOffset}) {
         }
     }
 
+    const prevArrow = <li onClick={()=>handlePage(pageOffset-1)}>{`<< Prev`}</li>;
     const listOne = <li onClick={()=>handlePage(1)} >1</li>;
     const firstDot = <li className="dot">...</li>;
     const listOneHundredth = <li onClick={()=>handlePage(100)} >100</li>;
     const lastDot = <li className="dot">...</li>;
+    const nextArrow = <li onClick={()=>handlePage(pageOffset+1)}>{`Next >>`}</li>;
                         
                     
     return (
         <>
             <ul className="page-list">
-                <li onClick={()=>handlePage(pageOffset-1)}>{`<< Prev`}</li>
+                {pageOffset === 1 ? "" : prevArrow}
                 {pageOffset > 4 ? listOne : ""}
                 {pageOffset > 5 ? firstDot : ""}
                 {numberList}
                 {pageOffset < 96? lastDot : ""}
                 {pageOffset < 97? listOneHundredth : ""}
-                <li onClick={()=>handlePage(pageOffset+1)}>{`Next >>`}</li>
+                {pageOffset === 100 ? "" : nextArrow}
+                
             </ul>
         </>
     )
