@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, createContext } from 'react'
 import Layout from './pages/Layout'
 import FilmListHome from './pages/FilmListHome'
 import FilmListDecade from './pages/FilmListDecade'
@@ -6,8 +6,9 @@ import CriticsPick from './pages/CriticsPick'
 import Favorites from './pages/Favorites'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
+export const FavContext = createContext();
+
 function App() {
-  const [count, setCount] = useState(0);
   const [filmTitle, setFilmTitle] = useState("");
   const [searching, setSearching] = useState(false);
   const [favorites, setFavorites] = useState([]);
@@ -29,9 +30,11 @@ function App() {
 
   return (
     <div className="App">
+      <FavContext.Provider value={favorites}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout handleFilmTitle={handleFilmTitle} handleYear={handleYear} />}>
+            {/* <FavContext.Provider value={favorites}></FavContext.Provider> */}
             <Route index element={<FilmListHome filmTitle={filmTitle} searching={searching} />} />
             <Route path="critics-pick" element={<CriticsPick />} />
             <Route path="favorites" element={<Favorites />} />
@@ -40,6 +43,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      </FavContext.Provider>
     </div>
   )
 }

@@ -50,6 +50,9 @@ export default function CriticsPick(){
             <div id="container">
                 {status === "success" ? filmReviewComp : ""}
             </div>
+            <div className="title">
+                <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
+            </div>y
         </>
     )
 }

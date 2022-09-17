@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { FavContext } from "../App";
 import splitTitle from "../splitTitle";
 
 import {
@@ -11,11 +12,14 @@ import "react-circular-progressbar/dist/styles.css";
 export default function FilmReview({infoNyt}){
     // console.log(infoNyt.multimedia); //if no multimedia, null is logged.
     const [filmTmdb, setFilmTmdb] = useState([]);
+    const [isDuplicate, setIsDuplicate] = useState(null);
+    let favContext = useContext(FavContext);
+    
     let inputFilmTitleDashed = "";
 
     useEffect(()=>{
 
-        let inputFilmTitleDashed = splitTitle(infoNyt.display_title, "-");
+        inputFilmTitleDashed = splitTitle(infoNyt.display_title, "-");
 
         let inputFilmYear = "";
 
@@ -31,9 +35,7 @@ export default function FilmReview({infoNyt}){
           }).catch((error) => {
           })
 
-        console.log(infoNyt.display_title, inputFilmTitleDashed);
-
-    },[infoNyt])
+    },[infoNyt, isDuplicate])
 
     let filmURL = "";
     if(infoNyt?.multimedia){
@@ -41,7 +43,7 @@ export default function FilmReview({infoNyt}){
     } else if (filmTmdb?.poster_path) {
         filmURL = `https://image.tmdb.org/t/p/original${filmTmdb?.poster_path}`;
     } else {
-        filmURL = "src/assets/imagenotfound.png";
+        filmURL = "https://github.com/kenzonagari/NYTFilmLibrary/blob/main/src/assets/imagenotfound.png?raw=true";
     }
 
     const userScore = filmTmdb?.vote_average ? (filmTmdb.vote_average*10) : 0;
@@ -61,7 +63,7 @@ export default function FilmReview({infoNyt}){
         }
     } else if (userScore < 67) {
         ratingColor={
-            path: "#DFD06F",
+            path: "#F5DC5D",
             trail:"#B0934B"
         };
     } else {
@@ -70,25 +72,54 @@ export default function FilmReview({infoNyt}){
             trail:"#437B4F"
         };
     }
+
+    const handleFav = () => {
+        if(favContext.length > 0){
+            let foundDuplicate = false;
+            for(const element of favContext){
+                if(element.link.url === infoNyt.link.url){
+                    setIsDuplicate(true);
+                    foundDuplicate = true;
+                }
+            }
+            if(!foundDuplicate){
+                setIsDuplicate(false);
+                favContext.push(infoNyt);
+                console.log(favContext);
+            }
+        } else {
+            setIsDuplicate(false);
+            favContext.push(infoNyt); //first push
+            console.log(favContext);
+        }
+    }
+
+    const favPopup = <div className="popup">{isDuplicate === false? "Added To Favorites!" : isDuplicate === true? "Movie already added!" : ""}</div>
     
     return(
         <>
+        {isDuplicate === true || isDuplicate === false? favPopup : ""}
         <div className="card">
+            
             <img src={filmURL} alt="NYT-movie-image"></img>
             <div className="text">
-                <h1>{infoNyt.display_title}</h1>
+                <h1 className="card-title">{infoNyt.display_title}</h1>
                 <h2>{infoNyt.headline}</h2>
                 <p><b>Release Date:</b> {infoNyt.opening_date ? infoNyt.opening_date : "N/A"}</p>
                 <p className="byline">{infoNyt.byline ? `Review by ${infoNyt.byline}` : ""}</p>
                 <p>{infoNyt.summary_short ? infoNyt.summary_short : "No summary available"}</p>
                 <a href={infoNyt.link.url} target="_blank"><button className="button">Read Full Review</button></a>
             </div>
+            <div className="fav-icon">
+                <span className="fav-icon-text">Add to Favorites</span>
+                <img src="https://raw.githubusercontent.com/kenzonagari/NYTFilmLibrary/64f888b42a7d910ecf718e62ac4ba06f8f8686a8/src/assets/add-icon.svg" alt="favorite" onClick={handleFav}></img>
+            </div>
             <div className="circular-progress-bar">
                 <a href={filmTmdb? `https://www.themoviedb.org/movie/${filmTmdb.id}-${inputFilmTitleDashed}` : "https://www.themoviedb.org/movie/"} target="_blank">
                     <CircularProgressbar
                         value={userScore? userScore : 0}
                         text={userScore? `${userScore}%` : "N.A"}
-                        strokeWidth={8}
+                        strokeWidth={10}
                         background
                         backgroundPadding={6}
                         styles={buildStyles({

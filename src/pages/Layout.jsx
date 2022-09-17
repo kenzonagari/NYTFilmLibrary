@@ -21,7 +21,7 @@ function Layout ({handleFilmTitle, handleYear}) {
                             name="title" 
                             placeholder="search Titles, Actors .etc"
                     />
-                    <input type="image" src="src/assets/search-icon.svg" alt="Submit"/>
+                    <input type="image" src="https://raw.githubusercontent.com/kenzonagari/NYTFilmLibrary/9ce2eafa75aa4c040822eb59cbbe82d914079e81/src/assets/search-icon.svg" alt="Submit"/>
                 </form>
             </header>
             <SubHeader handleFilmTitle={handleFilmTitle} handleYear={handleYear}/>

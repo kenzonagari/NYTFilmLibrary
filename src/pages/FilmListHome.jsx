@@ -63,6 +63,9 @@ function FilmListHome ({filmTitle, searching}) {
             <div id="container">
                 {filmReviewComp}
             </div>
+            <div className="title">
+                <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
+            </div>
         </>
     )
 }

@@ -14,12 +14,12 @@ The NYT API is also supplemented with the TMDB API for additional infos such as 
 
 1. Search for a specific movie based on its title (Y)
 2. Browse for different films through the decades (Y)
-3. Add movies to favorites (WIP)
+3. Add movies to favorites (Y?)
 
 Additionally, it'll be nice to have:
 
 1. A light/dark theme option. (WIP)
-2. Search for a specific movie in each decade? (WIP)
+2. Search for a specific movie in each decade? (Y)
 3. Access the iconic NYT critics' pick. (Y)
 4. NYT API only shows up to 20 reviews at a time. Would be nice to access review #21 to #40, #41 to #60 .etc. (Y)
 5. See images along with each review. (Y)
