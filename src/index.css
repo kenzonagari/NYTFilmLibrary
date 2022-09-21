@@ -6,9 +6,18 @@
   line-height: 24px;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* --primary-color: #575edb;
+  --header-bg-color: #fff;
+  --app-bg-color: rgb(245, 245, 245);
+  --border-color: rgb(218, 218, 218);
+  --button-bg-color: #e2e2e2;
+  --header-bg-color: rgb(255, 255, 255);
+  --card-bg-color: rgb(255, 255, 255);
+  --header-font-color: #242424;
+  --subheader-color-off-light: rgb(138, 138, 138);
+  --subheader-color-off-dark: rgb(75,75,75);
+  --subheader-color-on: black;
+  --font-color: black; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,9 +26,41 @@
   -webkit-text-size-adjust: 100%;
 }
 
+#light {
+  --primary-color: #575edb;
+  --header-bg-color: #fff;
+  --app-bg-color: rgb(245, 245, 245);
+  --border-color: rgb(218, 218, 218);
+  --button-bg-color: #e2e2e2;
+  --header-bg-color: rgb(255, 255, 255);
+  --card-bg-color: rgb(255, 255, 255);
+  --header-font-color: #242424;
+  --subheader-color-off-light: rgb(138, 138, 138);
+  --subheader-color-off-dark: rgb(75,75,75);
+  --subheader-color-on: black;
+  --font-color: black;
+  color: black;
+}
+
+#dark {
+  --primary-color: #575edb;
+  --header-bg-color: rgb(45, 45, 45);
+  --app-bg-color: rgb(17, 17, 17);
+  --border-color: rgb(32, 32, 32);
+  --button-bg-color: #2c2c2c;
+  --header-bg-color: rgb(0, 0, 0);
+  --card-bg-color: rgb(43, 43, 43);
+  --header-font-color: #ffffff;
+  --subheader-color-off-dark: rgb(138, 138, 138);
+  --subheader-color-off-light: rgb(123, 123, 123);
+  --subheader-color-on: rgb(255, 255, 255);
+  --font-color: rgb(255, 255, 255);
+  color: white;
+}
+
 a {
   font-weight: 500;
-  color: #242424;
+  color: var(--header-font-color);
   text-decoration: inherit;
 }
 
@@ -32,7 +73,7 @@ body {
 .App{
   min-height:100%;
   position:relative;
-  background-color: rgb(245, 245, 245);
+  background-color: var(--app-bg-color);
 }
 
 header {
@@ -43,7 +84,7 @@ header {
   height: 7.5vh;
   padding-left: 20px;
   padding-right: 20px;
-  background: #ffffff;
+  background: var(--header-bg-color);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   font-family: 'Bitter', serif;
 }
@@ -75,7 +116,7 @@ header > h1 {
 input[type=text] {
   padding: 10px 10px;
   margin: 8px;
-  border: 2px solid #dedede;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   box-sizing: border-box;
   width: 250px;
@@ -87,6 +128,73 @@ input[type=image] {
   padding: 5px;
   cursor: pointer;
 }
+
+/*Simple css to style it like a toggle switch*/
+.theme-switch-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 2em;
+  margin-top: 1em;
+  margin-bottom: 0em;
+}
+
+.theme-switch-wrapper > p {
+  font-family: 'Bitter', sans-serif;
+  font-size: 1em;
+  margin-right: 1em;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 
 #subheader-list {
   display: flex;
@@ -106,13 +214,13 @@ input[type=image] {
   font-family: 'Bitter', serif;
   font-weight: 700;
   font-size: 1.2em;
-  color: rgb(75, 75, 75);
+  color: var(--subheader-color-off-dark);
   padding: 10px;
   cursor: pointer;
 }
 
 #subheader-tab > li:hover {
-  color: black;
+  color: var(--subheader-color-on);
   transform: scale(1.05);
 }
 
@@ -127,13 +235,13 @@ input[type=image] {
 #subheader-decades > a {
   font-family: 'Bitter', serif;
   font-weight: 700;
-  color: rgb(138, 138, 138);
+  color: var(--subheader-color-off-light);
   padding: 5px;
   cursor: pointer;
 }
 
 #subheader-decades > a:hover {
-  color: black;
+  color: var(--subheader-color-on);
   transform: scale(1.05);
 }
 
@@ -157,7 +265,7 @@ input[type=image] {
 }
 
 #film-quote{
-  color: #242424;
+  color: var(--header-font-color);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 1.1rem;
   font-style: italic;
@@ -179,7 +287,7 @@ input[type=image] {
 }
 
 .page-list > li {
-  color: rgb(138, 138, 138);
+  color: var(--subheader-color-off-light);
   padding: 15px;
   margin: 5px;
   width: fit-content;
@@ -190,7 +298,7 @@ input[type=image] {
 }
 
 .page-list > li:hover {
-  color: black;
+  color: var(--subheader-color-on);
   transform: scale(1.05);
 }
 
@@ -200,12 +308,12 @@ input[type=image] {
 
 .page-list > .dot:hover {
   cursor: default;
-  color: rgb(138, 138, 138);
+  color: var(--subheader-color-off-light);
   transform: scale(1);
 }
 
 .page-list > .current-page {
-  color: black;
+  color: var(--subheader-color-on);
   transform: scale(1.05);
 }
 
@@ -223,8 +331,8 @@ input[type=image] {
 }
 
 .card{
-  background: white;
-  border: 2px solid rgb(218, 218, 218);
+  background: var(--card-bg-color);
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   width: 47.5vw;
   margin: 5px;
@@ -267,16 +375,16 @@ input[type=image] {
   background-color: white;
   border-radius: 25%;
   scale: 0.8;
-  border: 2px solid #efefef;
+  border: 2px solid rgb(198, 198, 198);
 }
 
 .fav-icon-text {
   visibility: hidden;
   font-size: small;
   width: max-content;
-  background-color: #efefef;
+  background-color: var(--header-bg-color);
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: var(--font-color);
   text-align: center;
   border-radius: 5px;
   padding: 7px;
@@ -301,14 +409,14 @@ input[type=image] {
 }
 
 .text > h2 {
-  color: rgb(75, 75, 75);
+  color: var(--subheader-color-off-dark);
   font-size: 1.2em;
   line-height: 1em;
 }
 
 .text > .byline {
   font-style: italic;
-  color: rgb(75, 75, 75);
+  color: var(--subheader-color-off-dark);
 }
 
 .text > p {
@@ -328,9 +436,9 @@ input[type=image] {
 }
 
 .button:hover {
-  border-color: #393fa0;
-  color: #393fa0;
-  background-color: #e2e2e2;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--button-bg-color);
 }
 .button:focus,
 .button:focus-visible {
@@ -360,7 +468,7 @@ input[type=image] {
   top: 12%;
   width: fit-content;
   padding: 7px;
-  background-color: #575edb;
+  background-color: var(--primary-color);
   color: white;
   border-radius: 7px;
   z-index: 1;
@@ -403,6 +511,10 @@ footer > a:hover , footer > p > a:hover {
   color: #a1a5ff;
 }
 
+.not-found {
+  height: 60vh;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -416,22 +528,34 @@ footer > a:hover , footer > p > a:hover {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(138, 138, 138);
+  background: var(--subheader-color-off-light);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(75, 75, 75);
+  background: var(--subheader-color-off-dark);
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #000000;
     background-color: #ffffff;
+    --primary-color: #575edb;
+    --header-bg-color: #fff;
+    --app-bg-color: rgb(245, 245, 245);
+    --border-color: rgb(218, 218, 218);
+    --button-bg-color: #e2e2e2;
+    --header-bg-color: rgb(255, 255, 255);
+    --card-bg-color: rgb(255, 255, 255);
+    --header-font-color: #242424;
+    --subheader-color-off-light: rgb(138, 138, 138);
+    --subheader-color-off-dark: rgb(75,75,75);
+    --subheader-color-on: black;
+    --font-color: black;
   }
   
   .button {
     background-color: #efefef;
   }
-}
+} */

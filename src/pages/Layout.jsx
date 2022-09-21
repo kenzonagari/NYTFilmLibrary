@@ -3,7 +3,7 @@ import SubHeader from "./SubHeader";
 import Footer from "./Footer";
 import { Link, Outlet, useNavigate } from "react-router-dom"
 
-function Layout ({handleFilmTitle, handleYear}) {
+function Layout ({handleFilmTitle, handleYear, theme, handleTheme}) {
 
     const navigate = useNavigate();
 
@@ -33,6 +33,13 @@ function Layout ({handleFilmTitle, handleYear}) {
                     />
                 </form>
             </header>
+            <div className="theme-switch-wrapper">
+                <p>{theme === "light"? "Light Mode" : "Dark Mode"}</p>
+                <label className="theme-switch" htmlFor="checkbox" >
+                    <input type="checkbox" id="checkbox" onClick={handleTheme}/>
+                    <div className="slider round"></div>
+                </label>
+            </div>
             <SubHeader handleFilmTitle={handleFilmTitle} handleYear={handleYear}/>
             <Outlet/>
             <Footer/>

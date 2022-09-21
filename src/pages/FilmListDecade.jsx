@@ -75,7 +75,7 @@ export default function FilmListDecade(){
             </div>
             <div className="title">
                 <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
-            </div>y
+            </div>
         </>     
     )
 }
