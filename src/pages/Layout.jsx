@@ -18,7 +18,7 @@ function Layout ({handleFilmTitle, handleYear, theme, handleTheme}) {
             <header>
                 <Link to="/" onClick={()=>handleFilmTitle(null)}>
                     <div id="navbar-homepage">
-                        <img src="https://github.com/kenzonagari/NYTFilmLibrary/blob/main/src/assets/film-reel.png?raw=true"></img>
+                        <img src={theme === "light" ? "https://github.com/kenzonagari/NYTFilmLibrary/blob/main/src/assets/film-reel.png?raw=true" : "/src/assets/film-reel_white.png"}></img>
                         <h1>Films... per New York Times!</h1>
                     </div>
                 </Link>
@@ -28,7 +28,7 @@ function Layout ({handleFilmTitle, handleYear, theme, handleTheme}) {
                             placeholder="search Titles, Actors .etc"
                     />
                     <input  type="image" 
-                            src="https://raw.githubusercontent.com/kenzonagari/NYTFilmLibrary/9ce2eafa75aa4c040822eb59cbbe82d914079e81/src/assets/search-icon.svg" 
+                            src={theme === "light" ? "https://raw.githubusercontent.com/kenzonagari/NYTFilmLibrary/9ce2eafa75aa4c040822eb59cbbe82d914079e81/src/assets/search-icon.svg" : "/src/assets/search-icon_white.png"} 
                             alt="Submit"
                     />
                 </form>

@@ -6,19 +6,6 @@
   line-height: 24px;
   font-weight: 400;
 
-  /* --primary-color: #575edb;
-  --header-bg-color: #fff;
-  --app-bg-color: rgb(245, 245, 245);
-  --border-color: rgb(218, 218, 218);
-  --button-bg-color: #e2e2e2;
-  --header-bg-color: rgb(255, 255, 255);
-  --card-bg-color: rgb(255, 255, 255);
-  --header-font-color: #242424;
-  --subheader-color-off-light: rgb(138, 138, 138);
-  --subheader-color-off-dark: rgb(75,75,75);
-  --subheader-color-on: black;
-  --font-color: black; */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -29,32 +16,32 @@
 #light {
   --primary-color: #575edb;
   --header-bg-color: #fff;
-  --app-bg-color: rgb(245, 245, 245);
+  --app-bg-color: rgb(237, 237, 237);
   --border-color: rgb(218, 218, 218);
   --button-bg-color: #e2e2e2;
-  --header-bg-color: rgb(255, 255, 255);
   --card-bg-color: rgb(255, 255, 255);
   --header-font-color: #242424;
   --subheader-color-off-light: rgb(138, 138, 138);
   --subheader-color-off-dark: rgb(75,75,75);
   --subheader-color-on: black;
   --font-color: black;
+  --shadow-color: rgb(100,100,100);
   color: black;
 }
 
 #dark {
-  --primary-color: #575edb;
-  --header-bg-color: rgb(45, 45, 45);
-  --app-bg-color: rgb(17, 17, 17);
-  --border-color: rgb(32, 32, 32);
-  --button-bg-color: #2c2c2c;
-  --header-bg-color: rgb(0, 0, 0);
-  --card-bg-color: rgb(43, 43, 43);
+  --primary-color: #c2c5ff;
+  --header-bg-color: #242424;
+  --app-bg-color: rgb(19, 19, 19);
+  --border-color: rgb(107, 107, 107);
+  --button-bg-color: #5c5c5c;
+  --card-bg-color: #242424;
   --header-font-color: #ffffff;
   --subheader-color-off-dark: rgb(138, 138, 138);
   --subheader-color-off-light: rgb(123, 123, 123);
   --subheader-color-on: rgb(255, 255, 255);
   --font-color: rgb(255, 255, 255);
+  --shadow-color: rgb(0, 0, 0);
   color: white;
 }
 
@@ -77,6 +64,7 @@ body {
 }
 
 header {
+  background-color: var(--header-bg-color);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -84,8 +72,7 @@ header {
   height: 7.5vh;
   padding-left: 20px;
   padding-right: 20px;
-  background: var(--header-bg-color);
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px 0px var(--shadow-color);
   font-family: 'Bitter', serif;
 }
 
@@ -103,7 +90,7 @@ header > h1 {
 
 #navbar-homepage > img {
   margin: 0;
-  opacity: 0.9;
+  opacity: 1;
   transform: scale(0.7);
 }
 
@@ -180,7 +167,7 @@ input[type=image] {
 }
 
 input:checked + .slider {
-  background-color: var(--primary-color);
+  background-color: #575edb;
 }
 
 input:checked + .slider:before {
@@ -433,6 +420,8 @@ input:checked + .slider:before {
   font-family: 'Bitter', serif;
   cursor: pointer;
   transition: border-color 0.25s;
+  background-color: var(--button-bg-color);
+  color: var(--font-color);
 }
 
 .button:hover {
@@ -536,26 +525,3 @@ footer > a:hover , footer > p > a:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--subheader-color-off-dark);
 }
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #000000;
-    background-color: #ffffff;
-    --primary-color: #575edb;
-    --header-bg-color: #fff;
-    --app-bg-color: rgb(245, 245, 245);
-    --border-color: rgb(218, 218, 218);
-    --button-bg-color: #e2e2e2;
-    --header-bg-color: rgb(255, 255, 255);
-    --card-bg-color: rgb(255, 255, 255);
-    --header-font-color: #242424;
-    --subheader-color-off-light: rgb(138, 138, 138);
-    --subheader-color-off-dark: rgb(75,75,75);
-    --subheader-color-on: black;
-    --font-color: black;
-  }
-  
-  .button {
-    background-color: #efefef;
-  }
-} */

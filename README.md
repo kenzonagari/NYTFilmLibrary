@@ -14,11 +14,11 @@ The NYT API is also supplemented with the TMDB API for additional infos such as 
 
 1. Search for a specific movie based on its title (Y)
 2. Browse for different films through the decades (Y)
-3. Add movies to favorites (Y?)
+3. Add movies to favorites (Y - room for improvements)
 
 Additionally, it'll be nice to have:
 
-1. A light/dark theme option. (WIP)
+1. A light/dark theme option. (Y)
 2. Search for a specific movie in each decade? (Y)
 3. Access the iconic NYT critics' pick. (Y)
 4. NYT API only shows up to 20 reviews at a time. Would be nice to access review #21 to #40, #41 to #60 .etc. (Y)
@@ -33,7 +33,7 @@ Per New York Times: "Is there an API call limit? Yes, there are two rate limits 
 
 ## Documentation
 
-This app uses New York Times and TMDB API.
+This app uses New York Times (https://github.com/kenzonagari/NYTFilmLibrary) and TMDB API (https://developer.nytimes.com/docs/movie-reviews-api/1/overview).
 
 Loading animation imported from react-loading (https://github.com/fakiolinho/react-loading).
 
