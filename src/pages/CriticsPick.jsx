@@ -52,7 +52,7 @@ export default function CriticsPick(){
             </div>
             <div className="title">
                 <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
-            </div>y
+            </div>
         </>
     )
 }
