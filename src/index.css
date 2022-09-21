@@ -517,11 +517,11 @@ footer > a:hover , footer > p > a:hover {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--subheader-color-off-light);
+  background: rgb(145, 145, 145);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--subheader-color-off-dark);
+  background: rgb(61, 61, 61);
 }
