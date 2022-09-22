@@ -19,13 +19,14 @@ export default function Favorites () {
 
         setFavComp(filmReviewComp);
                 
-    },[favContext])
-
+    },[])
     
     const handleClearFav = () => {
         favContext.splice(0, favContext.length);
         setFavComp([]);
     }
+
+    const favGuide = <p className="fav-guide">Click the star button at top left of each movie to add to Favorites!</p>
 
     return(
         <>
@@ -35,6 +36,7 @@ export default function Favorites () {
             </div>
             <div id="container">
                 {favComp}
+                {favContext.length === 0? favGuide : ""}
             </div>
         </>
     )

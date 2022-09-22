@@ -319,7 +319,7 @@ input:checked + .slider:before {
   margin: auto;
   padding:10px;
   padding-bottom:60px;
-  min-height: 50vh;
+  min-height: 30vh;
 }
 
 .card{
@@ -509,6 +509,14 @@ footer > a:hover , footer > p > a:hover {
 
 .not-found {
   height: 60vh;
+}
+
+.fav-guide {
+  line-height: 100%;
+  margin-top: 5%;
+  opacity: 0.5;
+  font-family: sans-serif;
+  font-style: italic;
 }
 
 /* width */

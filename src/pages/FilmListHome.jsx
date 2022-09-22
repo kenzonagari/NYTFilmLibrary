@@ -52,6 +52,7 @@ function FilmListHome () {
             <h1>Home Page</h1> 
                 <PaginationScrollbar handlePage={handlePage} pageOffset={pageOffset}/>
                 {status === "loading" ? ReactLoadingComp : ""}
+                {status === "error" ? "Something went wrong. Try again later!" : ""}
             </div>
             <div id="container">
                 {filmReviewComp}
