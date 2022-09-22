@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import FilmReview from "./FilmReview";
 import PaginationScrollbar from "./PaginationScrollbar";
-import splitTitle from "../splitTitle";
 
 import ReactLoading from 'react-loading';
 

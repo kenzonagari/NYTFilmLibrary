@@ -5,36 +5,36 @@ import { useEffect } from "react";
 
 export default function Favorites () {
     let favContext = useContext(FavContext);
-    const [clear, setClear] = useState(false)
-
-    // console.log(favContext);
+    const [favComp, setFavComp] = useState([]); 
+    
+    let filmReviewComp = [""];
+    
     useEffect(()=>{
-        if(clear){
-            favContext=[];
-            console.log(clear);
-            console.log(favContext);
+        
+        if (favContext.length > 0){
+            filmReviewComp = favContext.map((e, index) =>
+                <FilmReview key={index} infoNyt={e}/>
+            )
         }
-    },[clear])
 
-    let filmReviewComp=[""];
-    if (favContext.length > 0){
-        filmReviewComp = favContext.map((e, index) =>
-            <FilmReview key={index} infoNyt={e}/>
-        )
-    }
+        setFavComp(filmReviewComp);
+                
+    },[favContext])
 
+    
     const handleClearFav = () => {
-        setClear(true);
+        favContext.splice(0, favContext.length);
+        setFavComp([]);
     }
 
     return(
         <>
             <div className="title">
                 <h1>Favorites</h1>
-                {/* <button onClick={handleClearFav}>Clear Favorites</button> */}
+                <button className="button" onClick={handleClearFav}>Clear Favorites</button>
             </div>
             <div id="container">
-                {filmReviewComp}
+                {favComp}
             </div>
         </>
     )

@@ -20,12 +20,13 @@
   --border-color: rgb(218, 218, 218);
   --button-bg-color: #e2e2e2;
   --card-bg-color: rgb(255, 255, 255);
-  --header-font-color: #242424;
+  --header-font-color: #000000;
   --subheader-color-off-light: rgb(138, 138, 138);
   --subheader-color-off-dark: rgb(75,75,75);
   --subheader-color-on: black;
   --font-color: black;
   --shadow-color: rgb(100,100,100);
+  --invert-value: 0;
   color: black;
 }
 
@@ -37,11 +38,12 @@
   --button-bg-color: #5c5c5c;
   --card-bg-color: #242424;
   --header-font-color: #ffffff;
-  --subheader-color-off-dark: rgb(138, 138, 138);
-  --subheader-color-off-light: rgb(123, 123, 123);
+  --subheader-color-off-dark: rgb(182, 182, 182);
+  --subheader-color-off-light: rgb(168, 168, 168);
   --subheader-color-on: rgb(255, 255, 255);
   --font-color: rgb(255, 255, 255);
   --shadow-color: rgb(0, 0, 0);
+  --invert-value: 1;
   color: white;
 }
 
@@ -76,10 +78,11 @@ header {
   font-family: 'Bitter', serif;
 }
 
-header > h1 {
-  font-size: 1.75em;
+header > a {
+  font-size: 1.2em;
   font-weight: 900;
   letter-spacing: 0.5px;
+  color: var(--header-font-color);
 }
 
 #navbar-homepage {
@@ -92,6 +95,7 @@ header > h1 {
   margin: 0;
   opacity: 1;
   transform: scale(0.7);
+  filter: invert(var(--invert-value));
 }
 
 #search-bar {
@@ -114,6 +118,7 @@ input[type=image] {
   height: 25px;
   padding: 5px;
   cursor: pointer;
+  filter: invert(var(--invert-value));
 }
 
 /*Simple css to style it like a toggle switch*/
@@ -422,6 +427,8 @@ input:checked + .slider:before {
   transition: border-color 0.25s;
   background-color: var(--button-bg-color);
   color: var(--font-color);
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .button:hover {
@@ -457,7 +464,7 @@ input:checked + .slider:before {
   top: 12%;
   width: fit-content;
   padding: 7px;
-  background-color: var(--primary-color);
+  background-color: #575edb;
   color: white;
   border-radius: 7px;
   z-index: 1;

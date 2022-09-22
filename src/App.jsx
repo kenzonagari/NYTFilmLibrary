@@ -8,7 +8,7 @@ import SearchPage from './pages/SearchPage'
 import NotFound from './pages/NotFound'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
-export const FavContext = createContext();
+export const FavContext = createContext([]);
 
 function App() {
   const [filmTitle, setFilmTitle] = useState("");
@@ -43,7 +43,7 @@ function App() {
             <Route path="/" element={<Layout handleFilmTitle={handleFilmTitle} handleYear={handleYear} theme={theme} handleTheme={handleTheme}/>}>
               <Route index element={<FilmListHome filmTitle={filmTitle} searching={searching} />} />
               <Route path="critics-pick" element={<CriticsPick />} />
-              <Route path="favorites" element={<Favorites />} />
+              <Route path="favorites" element={<Favorites favorites={favorites}/>} />
               <Route path="decades/:code" element={<FilmListDecade />}/>
               <Route path="search/:code" element={<SearchPage filmTitle={filmTitle} searching={searching}/>}/>
               <Route path="*" element={<NotFound/>} />
