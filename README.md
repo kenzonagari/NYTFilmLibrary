@@ -33,9 +33,18 @@ Additionally, it'll be nice to have:
 
 <img src="https://i.imgur.com/PDcDVab.png" width="700">
 
+## Key Points / Challenges
+
+1. Manipulating API calls to get the correct set of datas. 
+2. Using the result of one API call (NYT) to call a different API (TMDB), in hopes that the two results refer to the same movie (more likely to be accurate than not...)
+3. Adding favorites from different pages (and remember them once faved).
+4. Toggling between light/dark theme.
+
 ## Error 429 (Too Many Requests) - WIP
 
 Per New York Times: "Is there an API call limit? Yes, there are two rate limits per API: 4,000 requests per day and 10 requests per minute. You should sleep 6 seconds between calls to avoid hitting the per minute rate limit."
+
+Ideally, the user should be able to see that Error 429 has happened. This would be the primary focus for future improvements.
 
 ## Documentation
 
