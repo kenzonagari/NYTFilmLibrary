@@ -12,7 +12,9 @@ import "react-circular-progressbar/dist/styles.css";
 export default function FilmReview({infoNyt}){
     // console.log(infoNyt.multimedia); //if no multimedia, null is logged.
     const [filmTmdb, setFilmTmdb] = useState([]);
-    const [isDuplicate, setIsDuplicate] = useState(null);
+    const [isFav, setIsFav] = useState(null);
+    const [startPopup, setStartPopup] = useState(false);
+
     let favContext = useContext(FavContext);
     
     let inputFilmTitleDashed = "";
@@ -30,12 +32,17 @@ export default function FilmReview({infoNyt}){
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=80eefdeb6196f43baf8b87b69ec4b47d&language=en-US&query=${inputFilmTitleDashed}&year=${inputFilmYear}`)
           .then((response) => response.json())
           .then((data) => {
-            // console.log(data?.results[0].poster_path);
             setFilmTmdb(data?.results[0]);
           }).catch((error) => {
           })
+        
+        for(const element of favContext){
+            if(element.link.url === infoNyt.link.url){
+                setIsFav(true);
+            }
+        }
 
-    },[infoNyt, isDuplicate])
+    },[infoNyt])
 
     let filmURL = "";
     if(infoNyt?.multimedia){
@@ -74,31 +81,30 @@ export default function FilmReview({infoNyt}){
     }
 
     const handleFav = () => {
-        if(favContext.length > 0){
-            let foundDuplicate = false;
-            for(const element of favContext){
-                if(element.link.url === infoNyt.link.url){
-                    setIsDuplicate(true);
-                    foundDuplicate = true;
-                }
-            }
-            if(!foundDuplicate){
-                setIsDuplicate(false);
-                favContext.push(infoNyt);
-                console.log(favContext);
-            }
+
+        setStartPopup(true);
+
+        if((isFav === null || isFav === false)){
+            setIsFav(true);
+            favContext.push(infoNyt);
         } else {
-            setIsDuplicate(false);
-            favContext.push(infoNyt); //first push
-            console.log(favContext);
+            setIsFav(false);
+            if(favContext.length > 0){
+                let indexOfMovie = favContext.findIndex(element => element.link.url === infoNyt.link.url);
+                favContext.splice(indexOfMovie, 1);
+            } else {
+                favContext.pop();
+            }
         }
     }
 
-    const favPopup = <div className="popup">{isDuplicate === false? "Added To Favorites!" : isDuplicate === true? "Movie already added!" : ""}</div>
-    
+    const favPopup = <div className="popup">Added to Favorites!</div>;
+    const unfavPopup = <div className="popup">Removed from Favorites!</div>;
+
     return(
         <>
-        {isDuplicate === true || isDuplicate === false? favPopup : ""}
+        {isFav === true && startPopup ? favPopup : ""}
+        {isFav === false && startPopup ? unfavPopup : ""}
         <div className="card">
             
             <img src={filmURL} alt="NYT-movie-image"></img>
@@ -112,7 +118,7 @@ export default function FilmReview({infoNyt}){
             </div>
             <div className="fav-icon" onClick={handleFav}>
                 <span className="fav-icon-text">Add to Favorites</span>
-                <img src="https://raw.githubusercontent.com/kenzonagari/NYTFilmLibrary/64f888b42a7d910ecf718e62ac4ba06f8f8686a8/src/assets/add-icon.svg" alt="favorite" ></img>
+                <img src={ isFav === true ? "https://raw.githubusercontent.com/kenzonagari/NYTFilmLibrary/c569249322ab9b4cb9f2aa9954169c7760b065ec/src/assets/star-fav.svg" : "https://raw.githubusercontent.com/kenzonagari/NYTFilmLibrary/c569249322ab9b4cb9f2aa9954169c7760b065ec/src/assets/star-nofav.svg" } alt="favorite" ></img>
             </div>
             <div className="circular-progress-bar">
                 <a href={filmTmdb? `https://www.themoviedb.org/movie/${filmTmdb.id}-${inputFilmTitleDashed}` : "https://www.themoviedb.org/movie/"} target="_blank">
