@@ -25,6 +25,10 @@ Additionally, it'll be nice to have:
 5. See images along with each review. (Y)
 6. See TMDB average user scores for each movie reviewed. (Y)
 
+## App Architecture
+
+<img src="https://i.imgur.com/PDcDVab.png" width="700">
+
 ## Error 429 (Too Many Requests)
 
 Per New York Times: "Is there an API call limit? Yes, there are two rate limits per API: 4,000 requests per day and 10 requests per minute. You should sleep 6 seconds between calls to avoid hitting the per minute rate limit."
