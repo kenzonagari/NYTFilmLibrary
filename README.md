@@ -1,4 +1,4 @@
-# NYT Film Review Library
+# :movie_camera: NYT Film Review Library
 
 <img src="https://i.imgur.com/E3TQ3fe.png" width="700">
 
