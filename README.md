@@ -1,5 +1,9 @@
 # NYT Film Review Library
 
+<img src="https://i.imgur.com/E3TQ3fe.png" width="700">
+
+Try it out! https://nyt-film-library.vercel.app/
+
 ## Motivation
 
 The goal is to learn React.js by building a React-based Single-Page Application based on something that I'm passionate about - movies! The NYT Film Review API provides a library of archived film reviews since 1910s when New York Times started writing about movies. 
@@ -29,11 +33,9 @@ Additionally, it'll be nice to have:
 
 <img src="https://i.imgur.com/PDcDVab.png" width="700">
 
-## Error 429 (Too Many Requests)
+## Error 429 (Too Many Requests) - WIP
 
 Per New York Times: "Is there an API call limit? Yes, there are two rate limits per API: 4,000 requests per day and 10 requests per minute. You should sleep 6 seconds between calls to avoid hitting the per minute rate limit."
-
-(WIP)
 
 ## Documentation
 
