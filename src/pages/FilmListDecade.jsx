@@ -36,7 +36,6 @@ export default function FilmListDecade(){
 
     const handleFilter = (event) => {
         event.preventDefault(event);
-        console.log("filtering");
         setSearchTitle(event.target[0].value);
     }
 

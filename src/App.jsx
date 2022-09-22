@@ -41,7 +41,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout handleFilmTitle={handleFilmTitle} handleYear={handleYear} theme={theme} handleTheme={handleTheme}/>}>
-              <Route index element={<FilmListHome filmTitle={filmTitle} searching={searching} />} />
+              <Route index element={<FilmListHome />} />
               <Route path="critics-pick" element={<CriticsPick />} />
               <Route path="favorites" element={<Favorites favorites={favorites}/>} />
               <Route path="decades/:code" element={<FilmListDecade />}/>
