@@ -339,7 +339,7 @@ input:checked + .slider:before {
 .card > img {
   padding: 0;
   padding-right: 1.5em;
-  width: 20em;
+  width: 45%;
   height: 100%;
   object-fit: cover;
 }
