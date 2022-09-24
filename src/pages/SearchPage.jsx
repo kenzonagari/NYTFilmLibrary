@@ -5,7 +5,7 @@ import splitTitle from "../splitTitle";
 
 import ReactLoading from 'react-loading';
 
-function SearchPage ({filmTitle, searching}) {
+function SearchPage ({filmTitle}) {
 
     const [films, setFilms] = useState([]);
     const [pageOffset, setPageOffset] = useState(1);
@@ -29,7 +29,7 @@ function SearchPage ({filmTitle, searching}) {
             })
             .then((data) => {
                 setFilms(data?.results);
-                setStatus(searching);
+                setStatus("success");
             })  .catch((error) => {
                 setStatus("error");
             })
