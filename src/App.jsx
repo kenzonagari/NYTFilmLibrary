@@ -12,7 +12,6 @@ export const FavContext = createContext([]);
 
 function App() {
   const [filmTitle, setFilmTitle] = useState("");
-  const [searching, setSearching] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [theme, setTheme] = useState("light");
   const [year, setYear] = useState(0);
@@ -20,10 +19,8 @@ function App() {
   const handleFilmTitle = (inputFilmTitle) => {
     if(inputFilmTitle){
         setFilmTitle(inputFilmTitle);
-        setSearching("success");
     } else {
       setFilmTitle("");
-      setSearching(false);
     }
   }
 
@@ -45,7 +42,7 @@ function App() {
               <Route path="critics-pick" element={<CriticsPick />} />
               <Route path="favorites" element={<Favorites favorites={favorites}/>} />
               <Route path="decades/:code" element={<FilmListDecade />}/>
-              <Route path="search/:code" element={<SearchPage filmTitle={filmTitle} searching={searching}/>}/>
+              <Route path="search/:code" element={<SearchPage filmTitle={filmTitle}/>}/>
               <Route path="*" element={<NotFound/>} />
             </Route>
           </Routes>
