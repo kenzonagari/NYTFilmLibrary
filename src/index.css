@@ -660,7 +660,7 @@ footer > a:hover , footer > p > a:hover {
   }
 
   .fav-icon img {
-    height: fit-content;
+    height: 90%;
   }
 
   .circular-progress-bar {
