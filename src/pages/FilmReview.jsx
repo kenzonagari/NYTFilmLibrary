@@ -80,6 +80,10 @@ export default function FilmReview({infoNyt}){
         };
     }
 
+    //if(===0)
+    //if(1 - 33)
+    //if(34-66)
+
     const handleFav = () => {
 
         setStartPopup(true);
