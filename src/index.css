@@ -242,6 +242,7 @@ input:checked + .slider:before {
   text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -539,4 +540,150 @@ footer > a:hover , footer > p > a:hover {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(61, 61, 61);
+}
+
+@media (max-width: 40em){
+
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  header {
+    flex-direction: column;
+    padding: 1em;
+    height: fit-content;
+  }
+
+  #navbar-homepage {
+    display: none;
+  }
+
+  /* #navbar-homepage h1 {
+    font-size: 1.55em;
+    letter-spacing: -0.05em;
+    line-height: 1em;
+  } */
+
+  header form {
+    align-self: center;
+  }
+
+  input[type=text] {
+    padding: 10px 10px;
+    margin: 8px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 70vw;
+  }
+
+  #subheader-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #subheader-tab > li {
+    font-size: 1em;
+  }
+
+  #subheader-decades > a {
+    padding: 4px;
+  }
+
+  #subheader-decades > a > li {
+    font-size: 0.9em;
+  }
+
+  .title > h1 {
+    margin-top: 1em;
+    font-size: 2em;
+  }
+
+  #film-quote {
+    font-size: 1rem;
+    padding-left: 4em;
+    padding-right: 4em;
+  }
+
+  .decade-search-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .decade-search-bar > .button {
+    font-size: 0.8em;
+    width: 30%;
+    margin-top: 0;
+  }
+
+  .title > ul {
+    padding-inline-start: 0px;
+  }
+
+  .page-list {
+    flex-wrap: wrap;
+    margin: 1em;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .page-list > li {
+    padding: 2px;
+  }
+
+  .card {
+    width: 100vw;
+    flex-direction: column;
+    align-items:flex-start;
+  }
+
+  .card img {
+    width: 100%;
+    height: 10em;
+    object-fit: cover;
+    padding-right: 0;
+  }
+
+  .card > .text {
+    width: 85%;
+  }
+
+  .button {
+    float: right;
+  }
+
+  .fav-icon {
+    display: none;
+  }
+
+  .circular-progress-bar {
+    display: none;
+  }
+
+  .fav-guide {
+    font-size: 1em;
+    line-height: 1.5em;
+    text-align: center;
+    padding-left: 4em;
+    padding-right: 4em;
+  }
+
+  footer {
+    margin-top: 3em;
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+
+  footer > h1 {
+    font-size: 1.5em;
+  }
+
+  footer > p {
+    padding: 1em;
+    font-size: 0.8em;
+    text-align: center;
+  }
+
 }

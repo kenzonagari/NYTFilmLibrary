@@ -57,7 +57,7 @@ export default function FilmListDecade(){
             <div className="title">
                 <h1>{decade}s</h1>
                 <p id="film-quote">{decadeWriteup[`${decade}`]}</p>
-                <form onSubmit={handleFilter}>
+                <form className="decade-search-bar" onSubmit={handleFilter}>
                     <input 
                         type="text" 
                         name="title"
