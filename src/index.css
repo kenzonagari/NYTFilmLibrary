@@ -655,11 +655,16 @@ footer > a:hover , footer > p > a:hover {
   }
 
   .fav-icon {
-    display: none;
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  .fav-icon img {
+    height: fit-content;
   }
 
   .circular-progress-bar {
-    display: none;
+    width: 3.5em;
   }
 
   .fav-guide {
@@ -682,6 +687,8 @@ footer > a:hover , footer > p > a:hover {
 
   footer > p {
     padding: 1em;
+    padding-left: 4em;
+    padding-right: 4em;
     font-size: 0.8em;
     text-align: center;
   }
