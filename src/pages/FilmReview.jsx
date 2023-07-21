@@ -53,7 +53,7 @@ export default function FilmReview({infoNyt}){
         filmURL = "https://github.com/kenzonagari/NYTFilmLibrary/blob/main/src/assets/imagenotfound.png?raw=true";
     }
 
-    const userScore = filmTmdb?.vote_average ? (filmTmdb.vote_average*10).parseInt() : 0;
+    let userScore = filmTmdb?.vote_average ? filmTmdb.vote_average*10 : 0;
 
     let ratingColor = {};
     if(userScore < 34){
@@ -123,7 +123,7 @@ export default function FilmReview({infoNyt}){
             <div className="circular-progress-bar">
                 <a href={filmTmdb? `https://www.themoviedb.org/movie/${filmTmdb.id}-${inputFilmTitleDashed}` : "https://www.themoviedb.org/movie/"} target="_blank">
                     <CircularProgressbar
-                        value={userScore? Math.floor(userScore) : 0}
+                        value={userScore? userScore : 0}
                         text={userScore? `${Math.floor(userScore)}%` : "N.A"}
                         strokeWidth={10}
                         background
